@@ -1,0 +1,7 @@
+curl http://localhost:9009 -s -H "Content-Type: application/json" -X POST --data '{
+                       "jsonrpc":"2.0",
+                       "key":"$API_KEY",
+                       "id":1,
+                       "method":"bcn_syncing",
+                       "params": []
+               }' | jq -r -c '(.result.currentBlock)'
