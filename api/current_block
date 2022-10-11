@@ -1,4 +1,4 @@
-curl http://localhost:9009 -s -H "Content-Type: application/json" -X POST --data '{
+curl $RPC_HOST:$RPC_PORT -s -H "Content-Type: application/json" -X POST --data '{
                        "jsonrpc":"2.0",
                        "key":"$API_KEY",
                        "id":1,
