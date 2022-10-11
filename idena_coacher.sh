@@ -21,7 +21,7 @@ highest_block=$(envsubst < ./api/highest_block | bash)
 
 function importPkey {
 
-export PRIVATE_KEY=$(dialog --colors --backtitle "\Zb\Z5Your current key: \Zu\Z3$PRIVATE_KEY\Zn" --inputbox "Enter your nodekey?" 8 39 --title "Private Key Import Dialog"  3>&1 1>&2 2>&3)
+export PRIVATE_KEY=$(dialog --colors --backtitle "\Zb\Z5Your current key: \Zu\Z3$PRIVATE_KEY\Zn" --title "Private Key Import Dialog" --inputbox "Enter your nodekey?"  8 39  3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
 #echo "Updating your Private Key to $PRIVATE_KEY"
