@@ -21,9 +21,9 @@ highest_block=$(envsubst < ./api/highest_block | bash)
 
 function importPkey {
 
-PRIVATE_KEY=$(dialog --colors --backtitle "\Zb\Z5Your current key: \Zu\Z3$PRIVATE_KEY\Zn" --inputbox "Enter your nodekey?" 8 39 --title "Private Key Import Dialog" 3>&1 1>&2 2>&3)
+export PRIVATE_KEY=$(dialog --colors --backtitle "\Zb\Z5Your current key: \Zu\Z3$PRIVATE_KEY\Zn" --inputbox "Enter your nodekey?" 8 39 --title "Private Key Import Dialog"  3>&1 1>&2 2>&3)
 exitstatus=$?
-if [ $exitstatus = 0 ] && [ -z "$PRIVATE_KEY" ]; then
+if [ $exitstatus = 0 ]; then
 #echo "Updating your Private Key to $PRIVATE_KEY"
     service idena stop
     echo "$PRIVATE_KEY" > "$PRIVATE_PATH"
@@ -31,6 +31,8 @@ if [ $exitstatus = 0 ] && [ -z "$PRIVATE_KEY" ]; then
 else
     dialog --title "Private key import" --clear --msgbox "Private key import aborted. No changes were made." 10 41
 fi
+
+echo "(Exit status: $exitstatus)"
 	}
 
 function showLog {
