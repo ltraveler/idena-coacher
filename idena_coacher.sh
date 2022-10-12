@@ -21,12 +21,12 @@ highest_block=$(envsubst < ./api/highest_block | bash)
 
 function importPkey {
 
-export PRIVATE_KEY=$(dialog --colors --backtitle "\Zb\Z5Your current key: \Zu\Z3$PRIVATE_KEY\Zn" --title "Private Key Import Dialog" --inputbox "Enter your nodekey?"  8 39  3>&1 1>&2 2>&3)
+IBOX_KEY=$(dialog --colors --backtitle "\Zb\Z5Your current key: \Zu\Z3$PRIVATE_KEY\Zn" --title "Private Key Import Dialog" --inputbox "Enter your nodekey?"  8 39  3>&1 1>&2 2>&3)
 exitstatus=$?
-if [ $exitstatus = 0 ]; then
+if [ $exitstatus = 0 ] && [ -n "$IBOX_KEY" ] && [ "$PRIVATE_KEY" != "$IBOX_KEY" ]; then
 #echo "Updating your Private Key to $PRIVATE_KEY"
     service idena stop
-    echo "$PRIVATE_KEY" > "$PRIVATE_PATH"
+    echo "$IBOX_KEY" > "$PRIVATE_PATH"
     service idena start
 else
     dialog --title "Private key import" --clear --msgbox "Private key import aborted. No changes were made." 10 41
@@ -41,6 +41,15 @@ function showLog {
 
 	}
 
+function dashRefresh {
+
+		PRIVATE_KEY=$(cat "$PRIVATE_PATH")
+		node_address=$(envsubst < ./api/node_address | bash)
+		node_status=$(envsubst < ./api/node_status | bash)
+		current_block=$(envsubst < ./api/current_block | bash)
+		highest_block=$(envsubst < ./api/highest_block | bash)
+
+	}
 
 ###
 while [ 1 ]
@@ -61,13 +70,16 @@ fi
 
 case $CHOICE in
 	"1)")   
-		result="Address:\n\Zu\Z4$node_address\Zn\n\nPrivate key:\n\Zu\Z4$PRIVATE_KEY\Zn" 
+		dashRefresh
+		dialog --colors --title "Hello" --msgbox "Address:\n\Zu\Z4$node_address\Zn\n\nPrivate key:\n\Zu\Z4$PRIVATE_KEY\Zn" 10 80
 	;;
 	"2)")   
+		dashRefresh	
 		importPkey
 	;;
 
 	"3)")   
+		dashRefresh
 		showLog
         ;;
 
