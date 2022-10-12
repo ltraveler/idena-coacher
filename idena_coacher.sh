@@ -8,7 +8,6 @@ PRIVATE_PATH="/home/$username/idena-go/datadir/keystore/nodekey"
 PRIVATE_KEY=$(cat "$PRIVATE_PATH")
 API_PATH="/home/$username/idena-go/datadir/api.key"
 LOG_PATH="/home/$username/idena-go/idena_screen.log"
-export LOG_PATH="/home/$username/idena-go/idena_screen.log"
 export API_KEY=$(cat $API_PATH)
 export RPC_PORT="9009"
 export RPC_HOST="http://localhost"
@@ -17,6 +16,8 @@ node_address=$(envsubst < ./api/node_address | bash)
 node_status=$(envsubst < ./api/node_status | bash)
 current_block=$(envsubst < ./api/current_block | bash)
 highest_block=$(envsubst < ./api/highest_block | bash)
+
+dna_status=$(envsubst < ./api/dna_status | bash)
 
 
 function importPkey {
@@ -48,16 +49,16 @@ function dashRefresh {
 		node_status=$(envsubst < ./api/node_status | bash)
 		current_block=$(envsubst < ./api/current_block | bash)
 		highest_block=$(envsubst < ./api/highest_block | bash)
-
+		dna_status=$(envsubst < ./api/dna_status | bash)
 	}
 
 ###
 while [ 1 ]
 do
 CHOICE=$(
-dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn" --title "Idena node management" --menu "Node ID: $node_address Sync Status: $node_status" 25 78 5 \
+dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena node management" --menu "Node ID: $node_address Sync Status: $node_status" 25 78 5 \
 	"1)" "Show Private Key."  \
-	"2)" "Import Private Key."   \
+	"2)" "Import Private Key."  \
 	"3)" "Terminal layout."  \
 	"4)" "Activate mining." \
 	"5)" "Deactivate mining." \
@@ -74,21 +75,27 @@ case $CHOICE in
 		dialog --colors --title "Hello" --msgbox "Address:\n\Zu\Z4$node_address\Zn\n\nPrivate key:\n\Zu\Z4$PRIVATE_KEY\Zn" 10 80
 	;;
 	"2)")   
-		dashRefresh	
 		importPkey
+		dashRefresh
 	;;
 
 	"3)")   
-		dashRefresh
 		showLog
+		dashRefresh
         ;;
 
 	"4)")   
-		dialog --colors --msgbox "Under development" 20 78
+		#dialog --colors --msgbox "Under development" 20 78
+		envsubst < ./api/mining_on | bash
+		for ((i=0;i<=100;i+=10)); do echo $i; sleep 3; done | dialog --gauge "Please wait 30 seconds." 0 0
+		dashRefresh
         ;;
 
 	"5)")   
-             	dialog --colors --msgbox "Under development" 20 78 
+             	#dialog --colors --msgbox "Under development" 20 78 
+		envsubst < ./api/mining_off | bash
+		for ((i=0;i<=100;i+=10)); do echo $i; sleep 3; done | dialog --gauge "Please wait 30 seconds." 0 0
+                dashRefresh
         ;;
 
 	"6)")   
