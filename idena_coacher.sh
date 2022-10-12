@@ -104,5 +104,6 @@ case $CHOICE in
 
 esac
 done
+clear
 exit
 
