@@ -19,6 +19,11 @@ highest_block=$(envsubst < ./api/highest_block | bash)
 
 dna_status=$(envsubst < ./api/dna_status | bash)
 
+function delayProgress {
+
+                for ((i=0;i<=100;i+=10)); do echo $i; sleep 3; done | dialog --gauge "Please wait 30 seconds." 0 0
+
+}
 
 function importPkey {
 
@@ -28,7 +33,8 @@ if [ $exitstatus = 0 ] && [ -n "$IBOX_KEY" ] && [ "$PRIVATE_KEY" != "$IBOX_KEY" 
 #echo "Updating your Private Key to $PRIVATE_KEY"
     service idena stop
     echo "$IBOX_KEY" > "$PRIVATE_PATH"
-    service idena start
+    service idena start > /dev/null
+    for ((i=0;i<=100;i+=10)); do echo $i; sleep 6; done | dialog --gauge "Please wait 60 seconds." 0 0
 else
     dialog --title "Private key import" --clear --msgbox "Private key import aborted. No changes were made." 10 41
 fi
@@ -87,14 +93,14 @@ case $CHOICE in
 	"4)")   
 		#dialog --colors --msgbox "Under development" 20 78
 		envsubst < ./api/mining_on | bash
-		for ((i=0;i<=100;i+=10)); do echo $i; sleep 3; done | dialog --gauge "Please wait 30 seconds." 0 0
+		delayProgress
 		dashRefresh
         ;;
 
 	"5)")   
              	#dialog --colors --msgbox "Under development" 20 78 
 		envsubst < ./api/mining_off | bash
-		for ((i=0;i<=100;i+=10)); do echo $i; sleep 3; done | dialog --gauge "Please wait 30 seconds." 0 0
+		delayProgress
                 dashRefresh
         ;;
 
