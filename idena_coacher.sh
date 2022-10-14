@@ -12,10 +12,11 @@ export API_KEY=$(cat $API_PATH)
 export RPC_PORT="9009"
 export RPC_HOST="http://localhost"
 
-node_address=$(envsubst < ./api/node_address | bash) 
+export node_address=$(envsubst < ./api/node_address | bash) 
 node_status=$(envsubst < ./api/node_status | bash)
 current_block=$(envsubst < ./api/current_block | bash)
 highest_block=$(envsubst < ./api/highest_block | bash)
+current_balance=$(envsubst < ./api/get_balance | bash)
 
 dna_status=$(envsubst < ./api/dna_status | bash)
 
@@ -51,7 +52,7 @@ function showLog {
 function dashRefresh {
 
 		PRIVATE_KEY=$(cat "$PRIVATE_PATH")
-		node_address=$(envsubst < ./api/node_address | bash)
+		export node_address=$(envsubst < ./api/node_address | bash)
 		node_status=$(envsubst < ./api/node_status | bash)
 		current_block=$(envsubst < ./api/current_block | bash)
 		highest_block=$(envsubst < ./api/highest_block | bash)
@@ -62,7 +63,7 @@ function dashRefresh {
 while [ 1 ]
 do
 CHOICE=$(
-dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena node management" --menu "Node ID: $node_address Sync Status: $node_status" 25 78 5 \
+dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Current Balance: \Zu\Z3$current_balance\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena node management" --menu " \Zb\Z3Node ID: \ZB\Z0$node_address\Zb\Zn  \Zb\Z3Sync Status: \ZB\Z0$node_status\Zb\Zn" 25 78 5 \
 	"1)" "Show Private Key."  \
 	"2)" "Import Private Key."  \
 	"3)" "Terminal layout."  \
@@ -78,7 +79,7 @@ fi
 case $CHOICE in
 	"1)")   
 		dashRefresh
-		dialog --colors --title "Hello" --msgbox "Address:\n\Zu\Z4$node_address\Zn\n\nPrivate key:\n\Zu\Z4$PRIVATE_KEY\Zn" 10 80
+		dialog --colors --title "Hello" --msgbox " \Zb\Z5Address:\n\Zu\Z4$node_address\Zn\n\n \Zb\Z5Private key:\n\Zu\Z4$PRIVATE_KEY\Zn" 10 80
 	;;
 	"2)")   
 		importPkey
