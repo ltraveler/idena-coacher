@@ -21,7 +21,7 @@ cd idena-coacher
 ```
 chmod +x idena_coacher.sh
 ```
-*3. Originally IDENA Coacher has been developed as an additional TUI tool to manage nodes that have been deployed by [IDENA ARMer](https://github.com/ltraveler/idena-armer) or [IDENA Runner](https://github.com/ltraveler/idena-runner) scripts. Simply skip this step in case if you are willing to use it with the above-mentioned scripts <br><br>
+*3. Originally IDENA Coacher has been developed as an additional TUI tool to manage nodes that have been deployed by [IDENA ARMer](https://github.com/ltraveler/idena-armer) or [IDENA Runner](https://github.com/ltraveler/idena-runner) scripts. Simply skip this step in case if you are willing to use it with the above-mentioned tools.<br><br>
 In case if your node has been deployed customly you would have to change the default paths in the main script file.<br><br>
 Please run the command `nano idena_coacher.sh` in the home folder of the script and edit the following lines:*
 ```
