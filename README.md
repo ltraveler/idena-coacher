@@ -10,16 +10,37 @@
   <img alt="Idena Coacher Node Monitor Tool" Title="IDENA Coacher - User Interface" src="https://raw.githubusercontent.com/ltraveler/ltraveler/main/images/IDENA_Coacher_Monitor_Tool_UI.jpg">
 </p>
 
-## 🚀&nbsp; Summary
-1. Clone Idena Coacher to the home directory of the user that runs idena-go node client.
+## 🚀&nbsp; Quick Start
+*1. Clone Idena Coacher to the home directory of the user that runs idena-go node client.*
 ```
 cd /home/%username%
 git clone https://github.com/ltraveler/idena-coacher.git
 cd idena-coacher
 ```
-2. Make idena_coacher.sh executable
+*2. Make idena_coacher.sh executable*
 ```
 chmod +x idena_coacher.sh
 ```
-3. In case if you are not running Idena Coacher Monitor as part of the Idena Runner or Idena Armer script you would have to edit file idena_coacher.sh to change paths in lines with following numbers: 07, 09, 10, 12, 13.
-4. `./idena_coacher.sh` - run the script.
+*3. In case if you are not running Idena Coacher Monitor as part of the Idena Runner or Idena Armer script you would have to edit file idena_coacher.sh to change paths in lines with following numbers: 07, 09, 10, 12, 13.*
+```
+PRIVATE_PATH="/home/$username/idena-go/datadir/keystore/nodekey"
+```
+**Path to the nodekey (private key) file:**
+```
+API_PATH="/home/$username/idena-go/datadir/api.key"
+```
+**Path to the node api.key file:**
+```
+LOG_PATH="/home/$username/idena-go/idena_screen.log"
+```
+**Path to the idena-go log file:**
+```
+export RPC_PORT="9009"
+```
+**RPC Port of your node:**
+
+
+*4. Run the script.*
+```
+./idena_coacher.sh
+```
