@@ -17,6 +17,7 @@ cd /home/%username%
 git clone https://github.com/ltraveler/idena-coacher.git
 cd idena-coacher
 ```
+*%username% - the name of the user that runs idena-go client<br><br>
 *2. Make idena_coacher.sh executable*
 ```
 chmod +x idena_coacher.sh
