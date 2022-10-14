@@ -79,7 +79,7 @@ fi
 case $CHOICE in
 	"1)")   
 		dashRefresh
-		dialog --colors --title "Hello" --msgbox " \Zb\Z5Address:\n\Zu\Z4$node_address\Zn\n\n \Zb\Z5Private key:\n\Zu\Z4$PRIVATE_KEY\Zn" 10 80
+		dialog --colors --title "IDENA Node Wallet Info" --msgbox "\Zb\Z3Address:\ZB\n\Zu\Z0$node_address\Zn\n\n\Zb\Z3Private key:\ZB\n\Zu\Z0$PRIVATE_KEY\Zn" 10 80
 	;;
 	"2)")   
 		importPkey
