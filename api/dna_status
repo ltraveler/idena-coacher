@@ -1,6 +1,6 @@
 curl $RPC_HOST:$RPC_PORT -s -H "Content-Type: application/json" -X POST --data '{
                        "jsonrpc":"2.0",
-                       "key":"5161aefcb6cb2b289686365bb1c46daa",
+                       "key":"$API_KEY",
                        "id":1,
                        "method":"dna_identity",
                        "params": []
