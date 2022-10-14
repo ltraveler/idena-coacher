@@ -17,7 +17,7 @@ cd /home/%username%
 git clone https://github.com/ltraveler/idena-coacher.git
 cd idena-coacher
 ```
-*%username% - имя пользователя
+*%username% - имя пользователя<br><br>
 *2. Делаем файл idena_coacher.sh исполняемым*
 ```
 chmod +x idena_coacher.sh
