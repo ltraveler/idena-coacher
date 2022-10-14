@@ -27,19 +27,19 @@ To edit `idena_coacher.sh` simply run the command `nano idena_coacher.sh` in the
 ```
 PRIVATE_PATH="/home/$username/idena-go/datadir/keystore/nodekey"
 ```
-**Line #7:** *Path to the nodekey (private key) file*
+*Line #7:* **Path to the nodekey (private key) file**
 ```
 API_PATH="/home/$username/idena-go/datadir/api.key"
 ```
-**Line #9:** *Path to the node api.key file*
+*Line #9:* **Path to the node api.key file**
 ```
 LOG_PATH="/home/$username/idena-go/idena_screen.log"
 ```
-**Line #10:** *Path to the idena-go log file*
+*Line #10:* **Path to the idena-go log file**
 ```
 export RPC_PORT="9009"
 ```
-**Line #12:** *RPC Port of your node*
+*Line #12:* **RPC Port of your node**
 
 *4. Run the script.*
 ```
