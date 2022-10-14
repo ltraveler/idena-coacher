@@ -39,7 +39,6 @@ export RPC_PORT="9009"
 ```
 **RPC Port of your node:**
 
-
 *4. Run the script.*
 ```
 ./idena_coacher.sh
