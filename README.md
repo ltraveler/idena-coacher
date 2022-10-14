@@ -11,7 +11,7 @@
 </p>
 
 ## 🚀&nbsp; Quick Start
-*1. Clone Idena Coacher to the home directory of the user that runs idena-go node client.*
+*1. Clone Idena Coacher to the **home directory of the user** that runs idena-go node client.*
 ```
 cd /home/%username%
 git clone https://github.com/ltraveler/idena-coacher.git
