@@ -21,7 +21,9 @@ cd idena-coacher
 ```
 chmod +x idena_coacher.sh
 ```
-*3. In case if you are not running Idena Coacher Monitor as part of the Idena Runner or Idena Armer script you would have to edit file idena_coacher.sh to change paths in lines with following numbers: 07, 09, 10, 12, 13.*
+*3. Originally IDENA Coacher has been developed as an additional TUI tool to manage nodes that have been deployed by [IDENA ARMer](https://github.com/ltraveler/idena-armer) or [IDENA Runner](https://github.com/ltraveler/idena-runner) scripts.<br><br>
+That's not to say that it couldn't be used with the node that has been set customly. In case if you are using a custom node you would have to change the default paths in the main script file.<br><br>
+To edit `idena_coacher.sh` simply run the command `nano idena_coacher.sh` in the home folder of the script.*
 ```
 PRIVATE_PATH="/home/$username/idena-go/datadir/keystore/nodekey"
 ```
