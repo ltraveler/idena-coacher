@@ -109,13 +109,13 @@ while [ 1 ]
 do
 CHOICE=$(
 dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Current Balance: \Zu\Z3$current_balance\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena Node Management Tool by \ZB\Z5LTraveler\Zb\Zn" --menu " \Zb\Z3Node ID: \ZB\Z0$node_address\Zb\Zn  \Zb\Z3Sync Status: \ZB\Z0$node_status\Zb\Zn" 25 78 5 \
-	"1)" "Show Private Key."  \
-	"2)" "Import Private Key."  \
-	"3)" "Terminal layout."  \
-	"4)" "Activate mining." \
-	"5)" "Deactivate mining." \
-	"6)" "Send IDNA." \
-       	"7)" "About IDENA Coacher." 3>&2 2>&1 1>&3	
+	"1)" "Show Private Key"  \
+	"2)" "Import Private Key"  \
+	"3)" "Terminal layout"  \
+	"4)" "Activate mining" \
+	"5)" "Deactivate mining" \
+	"6)" "Send IDNA" \
+       	"7)" "About IDENA Coacher" 3>&2 2>&1 1>&3	
 )
 
 if [ $? -gt 0 ]; then 
