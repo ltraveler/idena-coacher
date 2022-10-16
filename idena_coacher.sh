@@ -57,19 +57,65 @@ function dashRefresh {
 		current_block=$(envsubst < ./api/current_block | bash)
 		highest_block=$(envsubst < ./api/highest_block | bash)
 		dna_status=$(envsubst < ./api/dna_status | bash)
+		current_balance=$(envsubst < ./api/get_balance | bash)
 	}
+
+function sendDNA {
+
+#
+#
+#
+
+destination_address=""
+transaction_amount=""
+
+# open fd
+exec 3>&1
+
+# Store transaction details
+export VALUES=$(dialog --colors --ok-label "Send" \
+	  --backtitle "Measure payee address thrice and send once! \Z1\ZbATTENTION:\ZB\Zn \Z3\ZbThere is no way\Zn to cancel the transaction after clicking \Z1Send\Zn button!\ZB" \
+	  --title "$node_address" \
+	  --form "\Z1Transaction details:\Zn" \
+15 70 0 \
+	"Destination:" 1 1	"$destination_address" 	1 15 42 0 \
+	"Amount:"    2 1	"$transaction_amount"  	2 15 42 0 \
+2>&1 1>&3)
+exitstatus=$?
+# close fd
+exec 3>&-
+echo $VALUES
+export destination_address=`echo $VALUES | awk '{print $1}'`
+export transaction_amount=`echo $VALUES | awk '{print $2}'`
+	
+if [[ $exitstatus = 0 ]] && [[ -n "$destination_address" ]] && [[ "$destination_address" =~ ^0x[0-9a-fA-F]{40}$ ]] && [[ -n "$transaction_amount" ]] && [[ "$transaction_amount" =~ ^[0-9]+$ ]]; then
+
+	transaction_hash=$(envsubst < ./api/send_dna | bash)
+	for ((i=0;i<=100;i+=10)); do echo $i; sleep 3; done | dialog --gauge "Please wait 30 seconds." 0 0
+	dialog --colors --title "Transaction has been sent" --clear --msgbox "\Zb\Z3Destination:\ZB\n\Zu\Z0$destination_address\Zn\n\n\Zb\Z3Amount:\ZB\n\Zu\Z0$transaction_amount\Zn\n\n\Zb\Z3Transaction hash:\ZB\n\Zu\Z0$transaction_hash\Zn" 10 80 
+	dashRefresh
+
+else
+
+	dialog --colors --title "Oops, something went wrong..." --clear --msgbox "\Z1Please check one of the following conditions:\ZB\Zn\n\n1. You may have entered an incorrect payee \Z4iDNA\Zn address.\n2. You may have entered an incorrect \Z4iDNA\Zn amount.\n3. The \Z5ESC\Zn or \Z5Cancel\Zn button has been pressed." 10 80
+
+fi
+
+}
+
 
 ###
 while [ 1 ]
 do
 CHOICE=$(
-dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Current Balance: \Zu\Z3$current_balance\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena node management" --menu " \Zb\Z3Node ID: \ZB\Z0$node_address\Zb\Zn  \Zb\Z3Sync Status: \ZB\Z0$node_status\Zb\Zn" 25 78 5 \
+dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Current Balance: \Zu\Z3$current_balance\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena Node Management Tool by \ZB\Z5LTraveler\Zb\Zn" --menu " \Zb\Z3Node ID: \ZB\Z0$node_address\Zb\Zn  \Zb\Z3Sync Status: \ZB\Z0$node_status\Zb\Zn" 25 78 5 \
 	"1)" "Show Private Key."  \
 	"2)" "Import Private Key."  \
 	"3)" "Terminal layout."  \
 	"4)" "Activate mining." \
 	"5)" "Deactivate mining." \
-	"6)" "Send IDNA."  3>&2 2>&1 1>&3	
+	"6)" "Send IDNA." \
+       	"7)" "About IDENA Coacher." 3>&2 2>&1 1>&3	
 )
 
 if [ $? -gt 0 ]; then 
@@ -106,8 +152,13 @@ case $CHOICE in
         ;;
 
 	"6)")   
-		dialog --colors --msgbox "Under development" 20 78	
+		#dialog --colors --msgbox "Under development" 20 78	
+		sendDNA
+		dashRefresh
         ;;
+	"7)")
+		dialog --colors --title "IDENA Coacher by LTraveler: (\Zb\Z6t.me/ltrvlr\Zn\ZB)" --msgbox "Bash implementation of the localhost node management tool with the following features:\n✧ \Z5Status\Zn ✧ \Z3\ZbMining ON/OFF\Zn\ZB ✧ \Z1Key change\Zn ✧ \Zb\Z4Send iDNA\Zn\ZB ✧\n\n✦ \Z7GitHub Repository:\Zn \Zb\Z7https://github.com/ltraveler/idena-coacher\Zn\n✧ \Z7Version:\Zn \Zb\Z70.1.2\Zn\ZB\n✦ \Z7Any donations are welcome:\Zn \Zb\Z70xf041640788910fc89a211cd5bcbf518f4f14d831\Zn\ZB\n✧ \Z7Telegram support:\Zn \Zb\Z7https://t.me/ltrvlr\Zn\ZB" 20 91
+	;;
 
 esac
 done
