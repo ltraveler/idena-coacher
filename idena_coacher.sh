@@ -108,7 +108,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Current Balance: \Zu\Z3$current_balance\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena Node Management Tool by \ZB\Z5LTraveler\Zb\Zn" --menu " \Zb\Z3Node ID: \ZB\Z0$node_address\Zb\Zn  \Zb\Z3Sync Status: \ZB\Z0$node_status\Zb\Zn" 25 78 5 \
+dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Current Balance: \Zu\Z3$current_balance\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena Node Management Tool by \ZB\Z5LTraveler\Zb\Zn" --menu " \Zb\Z3Node ID: \ZB\Z0$node_address\Zb\Zn  \Zb\Z3Sync Status: \ZB\Z0$node_status\Zb\Zn" 14 78 5 \
 	"1)" "Show Private Key"  \
 	"2)" "Import Private Key"  \
 	"3)" "Terminal Layout"  \
@@ -157,7 +157,7 @@ case $CHOICE in
 		dashRefresh
         ;;
 	"7)")
-		dialog --colors --title "IDENA Coacher by LTraveler: (\Zb\Z6t.me/ltrvlr\Zn\ZB)" --msgbox "Bash implementation of the localhost node management tool with the following features:\n✧ \Z5Status\Zn ✧ \Z3\ZbMining ON/OFF\Zn\ZB ✧ \Z1Key change\Zn ✧ \Zb\Z4Send iDNA\Zn\ZB ✧\n\n✦ \Z7GitHub Repository:\Zn \Zb\Z7https://github.com/ltraveler/idena-coacher\Zn\n✧ \Z7Version:\Zn \Zb\Z70.1.2\Zn\ZB\n✦ \Z7Any donations are welcome:\Zn \Zb\Z70xf041640788910fc89a211cd5bcbf518f4f14d831\Zn\ZB\n✧ \Z7Telegram support:\Zn \Zb\Z7https://t.me/ltrvlr\Zn\ZB" 20 91
+		dialog --colors --title "IDENA Coacher by LTraveler: (\Zb\Z6t.me/ltrvlr\Zn\ZB)" --msgbox "\nBash implementation of the localhost node management tool with the following features:\n✧ \Z5Status\Zn ✧ \Z3\ZbMining ON/OFF\Zn\ZB ✧ \Z1Key change\Zn ✧ \Zb\Z4Send iDNA\Zn\ZB ✧\n\n✦ \Z7GitHub Repository:\Zn \Zb\Z7https://github.com/ltraveler/idena-coacher\Zn\n✧ \Z7Version:\Zn \Zb\Z70.1.2\Zn\ZB\n✦ \Z7Any donations are welcome:\Zn \Zb\Z70xf041640788910fc89a211cd5bcbf518f4f14d831\Zn\ZB\n✧ \Z7Telegram support:\Zn \Zb\Z7https://t.me/ltrvlr\Zn\ZB" 13 91
 	;;
 
 esac
