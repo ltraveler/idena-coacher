@@ -1,4 +1,15 @@
 #!/usr/bin/bash
+#
+#Checking if req packages are installed
+reqpkgs=('jq' 'dialog' 'nano' 'netcat-traditional' )
+for x in "${reqpkgs[@]}"; do
+dpkg -s "$x" &> /dev/null
+if [ $? != 0 ]; then
+    echo -e "${LRED}Package $x is not instlled. Installing...${NC}"
+    apt-get install -y $x; 
+fi
+done
+#
 TERM=linux
 clear
 #
@@ -102,8 +113,13 @@ else
 fi
 
 }
-
-
+###
+#checking if idena-go client is running
+if ! ( nc -zv localhost $RPC_PORT 2>&1 >/dev/null ); then
+dialog --colors --title "Oops, something went wrong..." --clear --msgbox "\Z1The port \Z4$RPC_PORT\Zn \Z1is closed!\Zn\n\nPlease check if the \Zb\Z4RPC_PORT\Zn\ZB variable has the correct port number and your \Z4idena-go\Zn node client is successfully running." 10 80
+clear
+exit 1
+fi
 ###
 while [ 1 ]
 do
