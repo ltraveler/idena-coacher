@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #
 #Checking if req packages are installed
-reqpkgs=('jq' 'dialog' 'nano' 'netcat-traditional' 'gettext-base')
+reqpkgs=('jq' 'dialog' 'nano' 'netcat-traditional' 'gettext')
 for x in "${reqpkgs[@]}"; do
 dpkg -s "$x" &> /dev/null
 if [ $? != 0 ]; then
