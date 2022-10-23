@@ -175,7 +175,7 @@ case $CHOICE in
 		dashRefresh
         ;;
 	"7)")
-		dialog --colors --title "IDENA Coacher by LTraveler: (\Zb\Z6t.me/ltrvlr\Zn\ZB)" --msgbox "\nBash implementation of the localhost node management tool with the following features:\n✧ \Z5Status\Zn ✧ \Z3\ZbMining ON/OFF\Zn\ZB ✧ \Z1Key change\Zn ✧ \Zb\Z4Send iDNA\Zn\ZB ✧\n\n✦ \Z7GitHub Repository:\Zn \Zb\Z7https://github.com/ltraveler/idena-coacher\Zn\n✧ \Z7Version:\Zn \Zb\Z70.1.2\Zn\ZB\n✦ \Z7Any donations are welcome:\Zn \Zb\Z70xf041640788910fc89a211cd5bcbf518f4f14d831\Zn\ZB\n✧ \Z7Telegram support:\Zn \Zb\Z7https://t.me/ltrvlr\Zn\ZB" 13 91
+		dialog --colors --title "IDENA Coacher by LTraveler: (\Zb\Z6t.me/ltrvlr\Zn\ZB)" --msgbox "\nBash implementation of the localhost node management tool with the following features:\n✧ \Z5Status\Zn ✧ \Z3\ZbMining ON/OFF\Zn\ZB ✧ \Z1Key change\Zn ✧ \Zb\Z4Send iDNA\Zn\ZB ✧\n\n✦ \Z7GitHub Repository:\Zn \Zb\Z7https://github.com/ltraveler/idena-coacher\Zn\n✧ \Z7Version:\Zn \Zb\Z70.1.5\Zn\ZB\n✦ \Z7Any donations are welcome:\Zn \Zb\Z70xf041640788910fc89a211cd5bcbf518f4f14d831\Zn\ZB\n✧ \Z7Telegram support:\Zn \Zb\Z7https://t.me/ltrvlr\Zn\ZB" 13 91
 	;;
 
 esac
