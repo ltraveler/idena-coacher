@@ -28,6 +28,7 @@ node_status=$(envsubst < ./api/node_status | bash)
 current_block=$(envsubst < ./api/current_block | bash)
 highest_block=$(envsubst < ./api/highest_block | bash)
 current_balance=$(envsubst < ./api/get_balance | bash)
+current_stake=$(envsubst < ./api/get_stake | bash)
 
 dna_status=$(envsubst < ./api/dna_status | bash)
 
@@ -69,6 +70,7 @@ function dashRefresh {
 		highest_block=$(envsubst < ./api/highest_block | bash)
 		dna_status=$(envsubst < ./api/dna_status | bash)
 		current_balance=$(envsubst < ./api/get_balance | bash)
+		current_stake=$(envsubst < ./api/get_stake | bash)
 	}
 
 function sendDNA {
@@ -124,7 +126,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Current Balance: \Zu\Z3$current_balance\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena Node Management Tool by \ZB\Z5LTraveler\Zb\Zn" --menu " \Zb\Z3Node ID: \ZB\Z0$node_address\Zb\Zn  \Zb\Z3Sync Status: \ZB\Z0$node_status\Zb\Zn" 14 78 5 \
+dialog --colors --clear --backtitle "\Zb\Z5Current block: \Zu\Z3$current_block\Zn \Zb\Z5Highest block: \Zu\Z3$highest_block\Zn \Zb\Z5Current Balance: \Zu\Z3$current_balance\Zn \Zb\Z5Current Stake: \Zu\Z3$current_stake\Zn \Zb\Z5Mining Status: \Zu\Z3$dna_status\Zn"  --title "Idena Node Management Tool by \ZB\Z5LTraveler\Zb\Zn" --menu " \Zb\Z3Node ID: \ZB\Z0$node_address\Zb\Zn  \Zb\Z3Sync Status: \ZB\Z0$node_status\Zb\Zn" 14 78 5 \
 	"1)" "Show Private Key"  \
 	"2)" "Import Private Key"  \
 	"3)" "Terminal Layout"  \
