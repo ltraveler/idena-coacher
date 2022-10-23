@@ -24,6 +24,7 @@ export RPC_PORT="9009"
 export RPC_HOST="http://localhost"
 
 export node_address=$(envsubst < ./api/node_address | bash) 
+
 node_status=$(envsubst < ./api/node_status | bash)
 current_block=$(envsubst < ./api/current_block | bash)
 highest_block=$(envsubst < ./api/highest_block | bash)
@@ -74,14 +75,12 @@ function dashRefresh {
 	}
 
 function sendDNA {
-
 #
+export transaction_type="0"
 #
-#
-
 destination_address=""
 transaction_amount=""
-
+#
 # open fd
 exec 3>&1
 

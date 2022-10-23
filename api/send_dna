@@ -5,6 +5,7 @@ curl $RPC_HOST:$RPC_PORT -s -H "Content-Type: application/json" -X POST --data '
                        "method":"dna_sendTransaction",
                        "params": [
 				{
+			"type": $transaction_type,
 			"from": "$node_address",
 		        "to": "$destination_address",
 			"amount": "$transaction_amount"
