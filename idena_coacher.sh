@@ -88,10 +88,10 @@ exec 3>&1
 export VALUES=$(dialog --colors --ok-label "Send" \
 	  --backtitle "Measure payee address thrice and send once! \Z1\ZbATTENTION:\ZB\Zn \Z3\ZbThere is no way\Zn to cancel transaction after clicking \Z1Send\Zn button!\ZB" \
 	  --title "$node_address" \
-	  --form "\Z1Transaction details:\Zn" \
+	  --form "\\Z1Current balance: \Z1\Zb$current_balance\ZB\Zn" \
 15 70 0 \
 	"Destination:" 1 1	"$destination_address" 	1 15 42 0 \
-	"Amount:"    2 1	"$transaction_amount"  	2 15 42 0 \
+	"Amount to transfer:"    2 1	"$transaction_amount"  	2 23 34 0 \
 2>&1 1>&3)
 exitstatus=$?
 # close fd
@@ -126,10 +126,10 @@ transaction_amount=""
 exec 3>&1
 
 # Store transaction details
-export VALUES=$(dialog --colors --ok-label "Send" \
-	  --backtitle "Measure payee address thrice and send once! \Z1\ZbATTENTION:\ZB\Zn \Z3\ZbThere is no way\Zn to cancel stake replenishment transaction after clicking \Z1Send\Zn button!\ZB" \
+export VALUES=$(dialog --colors --ok-label "Replenish" \
+	  --backtitle "Measure payee address thrice and send once! \Z1\ZbATTENTION:\ZB\Zn \Z3\ZbThere is no way\Zn to cancel stake replenishment transaction after clicking \Z1Replenish\Zn button!\ZB" \
 	  --title "$node_address" \
-	  --form "\Z1Stake replenishment details:\Zn" \
+	  --form "\Z1Current balance: \Z1\Zb$current_balance\ZB\Zn" \
 15 70 0 \
 	"Destination:" 1 1	"$destination_address" 	1 15 42 0 \
 	"Replenishment amount:"    2 1	"$transaction_amount"  	2 23 34 0 \
