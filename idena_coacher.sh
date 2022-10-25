@@ -104,7 +104,7 @@ if [[ $exitstatus = 0 ]] && [[ -n "$destination_address" ]] && [[ "$destination_
 
 	transaction_hash=$(envsubst < ./api/send_dna | bash)
 	for ((i=0;i<=100;i+=10)); do echo $i; sleep 3; done | dialog --gauge "Please wait 30 seconds." 0 0
-	dialog --colors --title "Transaction has been sent" --clear --msgbox "\Zb\Z3Destination:\ZB\n\Zu\Z0$destination_address\Zn\n\n\Zb\Z3Amount:\ZB\n\Zu\Z0$transaction_amount\Zn\n\n\Zb\Z3Transaction hash:\ZB\n\Zu\Z0$transaction_hash\Zn" 10 80 
+	dialog --colors --title "Transaction has been sent" --clear --msgbox "\Zb\Z3Destination:\ZB\n\Zu\Z0$destination_address\Zn\n\n\Zb\Z3Amount:\ZB\n\Zu\Z0$transaction_amount\Zn\n\n\Zb\Z3Transaction hash:\ZB\n\Zu\Z0$transaction_hash\Zn" 12 80 
 	dashRefresh
 
 else
@@ -145,7 +145,7 @@ if [[ $exitstatus = 0 ]] && [[ -n "$destination_address" ]] && [[ "$destination_
 
 	transaction_hash=$(envsubst < ./api/send_dna | bash)
 	for ((i=0;i<=100;i+=10)); do echo $i; sleep 3; done | dialog --gauge "Please wait 30 seconds." 0 0
-	dialog --colors --title "Transaction has been sent" --clear --msgbox "\Zb\Z3Destination:\ZB\n\Zu\Z0$destination_address\Zn\n\n\Zb\Z3Amount:\ZB\n\Zu\Z0$transaction_amount\Zn\n\n\Zb\Z3Transaction hash:\ZB\n\Zu\Z0$transaction_hash\Zn" 10 80 
+	dialog --colors --title "Transaction has been sent" --clear --msgbox "\Zb\Z3Destination:\ZB\n\Zu\Z0$destination_address\Zn\n\n\Zb\Z3Amount:\ZB\n\Zu\Z0$transaction_amount\Zn\n\n\Zb\Z3Transaction hash:\ZB\n\Zu\Z0$transaction_hash\Zn" 12 80 
 	dashRefresh
 
 else
