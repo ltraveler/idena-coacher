@@ -4,4 +4,4 @@ curl $RPC_HOST:$RPC_PORT -s -H "Content-Type: application/json" -X POST --data '
                        "id":1,
                        "method":"dna_getBalance",
                        "params": ["$node_address"]
-               }' | jq -r -c '(.result.replenishedStake)'
+               }' | jq -r -c '(.result.stake)'
