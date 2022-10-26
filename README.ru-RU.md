@@ -49,3 +49,9 @@ export RPC_PORT="9009"
 
 ## ⏳&nbsp; Обновление скрипта до последней актуальной версии
 
+* **Перейти в директорию скрипта и запустить исполняемый файл `coacher_update.sh`**
+```
+cd /home/$username/idena-coacher/
+./coacher_update.sh
+```
+*$username - имя пользователя от которого запускается клиент ноды idena-go
