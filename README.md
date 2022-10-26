@@ -48,6 +48,7 @@ export RPC_PORT="9009"
 ```
 ## ⏳&nbsp; Update the script to the latest version
 
+* **Enter to the script home directory and run `coacher_update.sh`**
 ```
 cd /home/$username/idena-coacher/
 ./coacher_update.sh
