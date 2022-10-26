@@ -53,4 +53,4 @@ export RPC_PORT="9009"
 cd /home/$username/idena-coacher/
 ./coacher_update.sh
 ```
-*$username - the name of the user that runs idena-go client
+*`$username` - the name of the user that runs idena-go client
