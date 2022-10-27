@@ -10,12 +10,6 @@ else
 fi
 
 cd /home/$username/idena-coacher
-
-
-if [[ -z "$(git fetch)" ]]; then
-  	git pull
-	echo "IDENA Coacher has been successfully updated."
-else
-	echo "No updates found. Your version is up to date."
-fi
-
+git pull
+echo "IDENA Coacher has been successfully updated."
+exit
