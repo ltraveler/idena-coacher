@@ -10,6 +10,9 @@ else
 fi
 
 cd /home/$username/idena-coacher
-git pull
+if [[ $(git pull | grep 'Already up to date') ]]; then
+  echo "You already have the latest version"
+  exit
+fi
 echo "IDENA Coacher has been successfully updated."
 exit
