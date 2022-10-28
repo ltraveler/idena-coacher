@@ -34,7 +34,7 @@ API_PATH="/home/$username/idena-go/datadir/api.key"
 ```
 *Line #9:* **Path to the node api.key file**
 ```
-LOG_PATH="/home/$username/idena-go/idena_screen.log"
+LOG_PATH="/home/$username/idena-go/datadir/logs/output.log"
 ```
 *Line #10:* **Path to the idena-go log file**
 ```
