@@ -1,3 +1,10 @@
+## 0.1.9 (Oct 27, 2022)
+
+### Bugfix
+
+- IDENA Coacher update script has been changed
+- idena-go terminal output fix
+
 ## 0.1.8 (Oct 26, 2022)
 
 ### Changes
