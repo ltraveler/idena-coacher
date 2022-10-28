@@ -34,7 +34,7 @@ API_PATH="/home/$username/idena-go/datadir/api.key"
 ```
 *Строка №9:* **Путь к файлу API ключа ноды `api.key`**
 ```
-LOG_PATH="/home/$username/idena-go/idena_screen.log"
+LOG_PATH="/home/$username/idena-go/datadir/logs/output.log"
 ```
 *Строка №10:* **Путь к файлу логов клиента ноды idena-go**
 ```
