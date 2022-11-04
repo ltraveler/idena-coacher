@@ -15,6 +15,7 @@ clear
 #
 ARMER_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 username=$(echo "$ARMER_DIR" | awk -F\/ '{print $3}')
+cd /home/$username/idena-coacher
 PRIVATE_PATH="/home/$username/idena-go/datadir/keystore/nodekey"
 PRIVATE_KEY=$(cat "$PRIVATE_PATH")
 API_PATH="/home/$username/idena-go/datadir/api.key"
