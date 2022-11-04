@@ -1,3 +1,9 @@
+## 0.1.10 (Nov 03, 2022)
+
+### Bugfix
+
+- Small fix realted to IDENA ARMer '$PATH' change 
+
 ## 0.1.9 (Oct 27, 2022)
 
 ### Bugfix
