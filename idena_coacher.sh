@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #
 #Checking if req packages are installed
 reqpkgs=('jq' 'dialog' 'nano' 'netcat-traditional' 'gettext')
